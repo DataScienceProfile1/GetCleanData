@@ -1,5 +1,9 @@
 ## run_analysis.R - course project for Getting and Cleaning Data (Coursera)
-#
+# Creates a tidy data set with summary 
+
+# Before running, extract the raw data package to the working directory
+# https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
 library(data.table)
 library(reshape2)
 library(dplyr)
