@@ -1,9 +1,9 @@
-# You should create one R script called run_analysis.R that does the following:
-# 
+## run_analysis.R - course project for Getting and Cleaning Data (Coursera)
+#
 library(data.table)
 library(reshape2)
 library(dplyr)
-# 1. Merges the training and the test sets to create one data set.
+
 #   Set paths for all relevant files
 features_path <- "features.txt" #List of features (col names in X data)
 activity_labels_path <- "activity_labels.txt" #Links the class labels (numbers in y data) with their activity name.
@@ -37,8 +37,6 @@ feature_names<-as.character(unlist(features_table[2],use.names=FALSE))
 # Fix feature names to satisfy the principles of good variable names:
 #   - Not have underscores or dots or white spaces
 #   - descriptive (replace abbrev with full words)
-#   - All lower case when possible (ignoring this because it makes 
-#       names unreadable)
 #   - Not duplicated
 
 feature_names <- gsub("BodyBody","Body",feature_names)
@@ -69,15 +67,16 @@ train_set$activityId <- y_train_table[1]
 
 combined_set <- rbind(test_set,train_set)
 # 2. Extracts only the measurements on the mean and standard deviation for each
-# measurement. Subset out the columns with feature names starting with 'mean and
-# 'stdev'
+# measurement. (Subset out the columns with feature names starting with 'mean and
+# 'stdev')
 combined_set <- select(combined_set,starts_with("mean"),starts_with("stdev"),subjectId,activityId)
 
 # 3. Uses descriptive activity names to name the activities in the data set
 combined_set <- left_join(x = combined_set,y = activity_labels_table,by = "activityId")
 
 # 5. From the data set in step 4, creates a second, independent tidy data set
-#   ***with the average of each variable for each activity and each subject.***
+#   with the average of each variable for each activity and each subject.
+
 #   fix the factor levels in the subject and activity columns
 levels(combined_set$subjectId) <- as.character(sort(as.numeric(levels(combined_set$subjectId))))
 levels(combined_set$activityName) <- activity_labels_table$activityName
@@ -86,10 +85,14 @@ combined_set <- arrange(combined_set,activityName,subjectId)
 # Put the categorical tables on the far left, remove activity ID column as it
 # has been replaced with activity name
 combined_set <- select(combined_set,activityName,subjectId,starts_with("mean"),starts_with("stdev"))
+
+# Define groups on activity and subject, for dplyr summary below
 combined_set <- group_by(combined_set,activityName, subjectId)
+# Create final data table with observations averaged for each combination of
+# activity and subject.
 combined_set_summaries <- summarise_each(combined_set,funs(mean))
 
-# Write tidy table to file
+# Write final (tidy) data table to file
 write.table(combined_set_summaries,output_path,row.name=FALSE)
 # Verify by opening and viewing 
 View(read.table(output_path,header = TRUE))
