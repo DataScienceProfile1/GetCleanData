@@ -11,6 +11,19 @@ The dataset contains accelerometer and gyroscope data from 30 subjects engaging 
 The goal of this project was to extract all observations of the variables that contain means and standard deviations, and aggregate them by activity and subject. The end product is a tidy data file that contains one row for each unique combination of activity and user, giving the mean of observations for each variable.
 For example, there is one row for the mean results of subject 1 standing activity, one row for mean results of subject 2 standing activity, etc.
 
+## Data Method
+
+-Imported data from 8 files in raw dataset to get observations, variable names, subject ID's and descriptive names for activities.
+-Used a number of gsub commands to fix the variable names (in features.txt) to satisfy tidy data principles
+-Merged this data to create one table each for the 'train' and 'test' groups.
+-Combined the 'train' and 'test' groups into one master table using rbind.
+-Master table structure resembled this diagram that Community T.A. David Hood provided here: https://class.coursera.org/getdata-007/forum/thread?thread_id=49#comment-570
+-Used 'select' to reorder the variables in the master table
+-Grouped the master table data on activity and subject using dplyr group_by
+-Used summarise_each to create a summary table with means for the groups defined above
+-Used write.table to export the summary table to file.
+
+
 ##Code book
 Variables are written in camelCase as they are too long to be readable in all lowercase.
 
