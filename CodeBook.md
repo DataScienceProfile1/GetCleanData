@@ -13,15 +13,15 @@ For example, there is one row for the mean results of subject 1 standing activit
 
 ## Data Method
 
--Imported data from 8 files in raw dataset to get observations, variable names, subject ID's and descriptive names for activities.
--Used a number of gsub commands to fix the variable names (in features.txt) to satisfy tidy data principles
--Merged this data to create one table each for the 'train' and 'test' groups.
--Combined the 'train' and 'test' groups into one master table using rbind.
--Master table structure resembled this diagram that Community T.A. David Hood provided here: https://class.coursera.org/getdata-007/forum/thread?thread_id=49#comment-570
--Used 'select' to reorder the variables in the master table
--Grouped the master table data on activity and subject using dplyr group_by
--Used summarise_each to create a summary table with means for the groups defined above
--Used write.table to export the summary table to file.
+- Imported data from 8 files in raw dataset to get observations, variable names, subject ID's and descriptive names for activities.
+- Used a number of gsub commands to fix the variable names (in features.txt) to satisfy tidy data principles
+- Merged this data to create one table each for the 'train' and 'test' groups.
+- Combined the 'train' and 'test' groups into one master table using rbind.
+- Master table structure resembled this diagram that Community T.A. David Hood provided here: https://class.coursera.org/getdata-007/forum/thread?thread_id=49#comment-570
+- Used 'select' to reorder the variables in the master table
+- Grouped the master table data on activity and subject using dplyr group_by
+- Used summarise_each to create a summary table with means for the groups defined above
+- Used write.table to export the summary table to file.
 
 
 ##Code book
@@ -34,10 +34,10 @@ Variables are written in camelCase as they are too long to be readable in all lo
 Experiment subjects were numbered 1-30. This is a factor with 30 levels.
 
 - meanTimeBodyAcceleration, stdevFrequencyBodyGyroscopeMagnitude, etc. (66 variables)
-	-See features_info.txt included with the HAR dataset for technical definitions of each variable type. These values are normalized so they do not have units.
-	-Variables are named in the following format:
+	- See features_info.txt included with the HAR dataset for technical definitions of each variable type. These values are normalized so they do not have units.
+	- Variables are named in the following format:
 [statistic][domain][type of acceleration signal][instrument][measurement type(where applicable)][axis (where applicable)]
-		-statistic: mean or stdev (stdev denotes Standard Deviation)
+		- statistic: mean or stdev (stdev denotes Standard Deviation)
 		- domain: time or frequency
 		- type of acceleration signal: body or gravity
 		- instrument: accelerometer or gyroscope
