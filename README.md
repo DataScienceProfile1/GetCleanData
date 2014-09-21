@@ -21,7 +21,6 @@ README.md		This file - describes purpose and contents of the project
 - Merged this data to create one table each for the 'train' and 'test' groups. 
 - Combined the 'train' and 'test' groups into one master table using rbind.
 - Master table structure resembled this diagram that Community T.A. David Hood provided here: https://class.coursera.org/getdata-007/forum/thread?thread_id=49#comment-570
-
 - Used 'select' to reorder the variables in the master table
 - Grouped the master table data on activity and subject using dplyr group_by
 - Used summarise_each to create a summary table with means for the groups defined above
