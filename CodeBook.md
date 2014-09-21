@@ -27,23 +27,22 @@ For example, there is one row for the mean results of subject 1 standing activit
 ##Code book
 Variables are written in camelCase as they are too long to be readable in all lowercase.
 
-#activityName
-The name of the activity the subject was engaging in for the given observations. This is a factor with six levels: WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING.
+- activityName
+	-The name of the activity the subject was engaging in for the given observations. This is a factor with six levels: WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING.
 
-#subjectId
+- subjectId
 Experiment subjects were numbered 1-30. This is a factor with 30 levels.
 
-# meanTimeBodyAcceleration, stdevFrequencyBodyGyroscopeMagnitude, etc. (66 variables)
-See features_info.txt included with the HAR dataset for technical definitions of each variable type.
-These values are normalized so they do not have units.
-Variables are named in the following format:
+- meanTimeBodyAcceleration, stdevFrequencyBodyGyroscopeMagnitude, etc. (66 variables)
+	-See features_info.txt included with the HAR dataset for technical definitions of each variable type. These values are normalized so they do not have units.
+	-Variables are named in the following format:
 [statistic][domain][type of acceleration signal][instrument][measurement type(where applicable)][axis (where applicable)]
-	statistic: mean or stdev (stdev denotes Standard Deviation)
-	domain: time or frequency
-	type of acceleration signal: body or gravity
-	instrument: accelerometer or gyroscope
-	measurement type (where applicable): jerk, magnitude, jerk magnitude
-	axis (where applicable): X Y or Z
+		-statistic: mean or stdev (stdev denotes Standard Deviation)
+		- domain: time or frequency
+		- type of acceleration signal: body or gravity
+		- instrument: accelerometer or gyroscope
+		- measurement type (where applicable): jerk, magnitude, jerk magnitude
+		- axis (where applicable): X Y or Z
 
 ##Summary Choices
 Data is summarized by mean of observations for activity and subject, which was given in the requirements for the project. 
